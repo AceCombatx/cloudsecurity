@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Security - Welcome</title>
+    <title>Cloud Security - Testimonials</title>
     <style>
         body {
             margin: 0;
@@ -45,39 +45,23 @@
             padding: 120px 20px 50px;
         }
 
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #8e44ad, #6a11cb);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .button:hover {
-            background: linear-gradient(135deg, #6a11cb, #8e44ad);
-            transform: scale(1.05);
-        }
-
-        .testimonials {
-            margin-top: 50px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+        .testimonial-container {
             position: relative;
+            max-width: 700px;
+            margin: auto;
+            padding: 50px 20px;
+            text-align: center;
         }
 
         .testimonial {
-            position: absolute;
-            width: 100%;
+            display: none;
+            font-size: 20px;
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
 
-        .testimonial.active {
+        .active {
+            display: block;
             opacity: 1;
         }
 
@@ -97,33 +81,34 @@
         <a href="testimonials.html">Testimonials</a>
         <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Me</a>
     </div>
-    
-    <div class="container">
-        <h1>Welcome to Cloud Security 🌩🔐</h1>
-        <p>Cloud Security is a powerful bot that protects your Discord server from threats, raids, and malicious activity.</p>
-        <a href="https://cloud-security.gitbook.io/cloud-security-docs/" class="button">Get Started</a>
-    </div>
 
-    <div class="testimonials">
-        <h2>User Testimonials</h2>
-        <div class="testimonial active">"Cloud Security has transformed our server. Highly recommend!"</div>
-        <div class="testimonial">"A must-have for any serious server admin."</div>
-        <div class="testimonial">"The best security bot out there!"</div>
+    <div class="container">
+        <h1>What Our Users Say</h1>
+        <div class="testimonial-container">
+            <p class="testimonial active">💬 "Cloud Security has transformed our server. Highly recommend!"</p>
+            <p class="testimonial">💬 "The best security bot we've used. 10/10!"</p>
+            <p class="testimonial">💬 "Our moderation has never been easier. Thanks, Cloud Security!"</p>
+            <p class="testimonial">💬 "Super simple to set up and works flawlessly!"</p>
+        </div>
     </div>
 
     <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
 
     <script>
-        let currentTestimonial = 0;
-        const testimonials = document.querySelectorAll(".testimonial");
-        
-        function showNextTestimonial() {
-            testimonials[currentTestimonial].classList.remove("active");
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            testimonials[currentTestimonial].classList.add("active");
+        let index = 0;
+        function showTestimonial() {
+            let testimonials = document.querySelectorAll(".testimonial");
+            testimonials.forEach((t, i) => {
+                t.classList.remove("active");
+                t.style.opacity = "0";
+            });
+
+            index = (index + 1) % testimonials.length;
+            testimonials[index].classList.add("active");
+            testimonials[index].style.opacity = "1";
         }
-        
-        setInterval(showNextTestimonial, 3000);
+
+        setInterval(showTestimonial, 3000);
     </script>
 </body>
 </html>
