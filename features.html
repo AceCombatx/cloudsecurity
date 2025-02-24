@@ -4,7 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Security - Features</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #2b2d42, #6a11cb);
+            color: #ffffff;
+            text-align: center;
+            overflow-x: hidden;
+            transition: background 0.5s;
+        }
+
+        .nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav a {
+            color: #d1aaff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #8e44ad;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 120px 20px 50px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #8e44ad;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
@@ -12,13 +77,37 @@
         <a href="features.html">Features</a>
         <a href="faq.html">FAQ</a>
         <a href="community.html">Community</a>
-        <a href="testimonials.html">Testimonials</a>
         <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Me</a>
     </div>
-
+    
     <div class="container">
-        <h1>Key Features</h1>
-        <p>🛡️ Advanced Moderation | ✅ Verification System | 🎟️ Ticket Support</p>
+        <h1>Cloud Security Features</h1>
+        <div class="features">
+            <div class="feature">
+                <h3>🛡️ Advanced Moderation</h3>
+                <p>Keep your server safe with automated moderation tools, warnings, and punishments.</p>
+            </div>
+            <div class="feature">
+                <h3>✅ Verification System</h3>
+                <p>Prevent bots and unauthorized users from entering with a customizable verification method.</p>
+            </div>
+            <div class="feature">
+                <h3>🎟️ Ticket Support</h3>
+                <p>Manage user inquiries efficiently with an integrated ticketing system.</p>
+            </div>
+            <div class="feature">
+                <h3>🚀 Anti-Raid Protection</h3>
+                <p>Detect and block raid attempts to keep your server secure.</p>
+            </div>
+            <div class="feature">
+                <h3>🔒 Auto-Mod System</h3>
+                <p>Automatically filter bad words, spam, links, and more to maintain a safe environment.</p>
+            </div>
+            <div class="feature">
+                <h3>📜 Logging & Tracking</h3>
+                <p>Track actions in your server with detailed logging for bans, kicks, edits, and deletions.</p>
+            </div>
+        </div>
     </div>
 
     <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
