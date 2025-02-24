@@ -5,24 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Security - Testimonials</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .testimonial-container {
+            position: relative;
+            max-width: 700px;
+            margin: auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .testimonial {
+            display: none;
+            font-size: 20px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .active {
+            display: block;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
         <a href="faq.html">FAQ</a>
-        <a href="testimonials.html">Testimonials</a>
         <a href="community.html">Community</a>
+        <a href="testimonials.html">Testimonials</a>
         <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Me</a>
     </div>
 
     <div class="container">
         <h1>What Our Users Say</h1>
-        <p>💬 "Cloud Security has transformed our server. Highly recommend!"</p>
-        <p>💬 "The best security bot we've used. 10/10!"</p>
-        <p>💬 "Our moderation has never been easier. Thanks, Cloud Security!"</p>
+        <div class="testimonial-container">
+            <p class="testimonial active">💬 "Cloud Security has transformed our server. Highly recommend!"</p>
+            <p class="testimonial">💬 "The best security bot we've used. 10/10!"</p>
+            <p class="testimonial">💬 "Our moderation has never been easier. Thanks, Cloud Security!"</p>
+            <p class="testimonial">💬 "Super simple to set up and works flawlessly!"</p>
+        </div>
     </div>
 
     <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
+
+    <script>
+        let index = 0;
+        function showTestimonial() {
+            let testimonials = document.querySelectorAll(".testimonial");
+            testimonials.forEach((t, i) => {
+                t.classList.remove("active");
+                t.style.opacity = "0";
+            });
+
+            index = (index + 1) % testimonials.length;
+            testimonials[index].classList.add("active");
+            testimonials[index].style.opacity = "1";
+        }
+
+        setInterval(showTestimonial, 3000);
+    </script>
 </body>
 </html>
