@@ -4,7 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cloud Security - FAQ</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #2b2d42, #6a11cb);
+            color: #ffffff;
+            text-align: center;
+            overflow-x: hidden;
+            transition: background 0.5s;
+        }
+
+        .nav {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .nav a {
+            color: #d1aaff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #8e44ad;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 120px 20px 50px;
+        }
+
+        .faq {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .faq-answer {
+            display: none;
+            font-size: 16px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
@@ -18,9 +100,32 @@
 
     <div class="container">
         <h1>Frequently Asked Questions</h1>
-        <p>❓ How do I add the bot? <br> ❓ What permissions does it need?</p>
+        <div class="faq">
+            <div class="faq-item">
+                <div class="faq-question">❓ How do I add the bot?</div>
+                <div class="faq-answer">You can add the bot by clicking the "Invite Me" link at the top of this page.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">❓ What permissions does it need?</div>
+                <div class="faq-answer">The bot needs Administrator permissions for full functionality, but you can customize them based on your needs.</div>
+            </div>
+        </div>
     </div>
 
     <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                let answer = this.nextElementSibling;
+                if (answer.style.display === "block") {
+                    answer.style.display = "none";
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = "none");
+                    answer.style.display = "block";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
