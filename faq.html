@@ -49,36 +49,37 @@
 
         .faq {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            margin: 10px 0;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
         }
 
-        .faq-item {
-            margin-bottom: 10px;
+        .faq:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .faq-question {
             font-size: 18px;
             font-weight: bold;
-            cursor: pointer;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .faq-question:hover {
-            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .faq-answer {
             display: none;
             font-size: 16px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
-            margin-top: 5px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .faq.active .faq-answer {
+            display: block;
+            opacity: 1;
         }
 
         .footer {
@@ -100,14 +101,40 @@
 
     <div class="container">
         <h1>Frequently Asked Questions</h1>
+
         <div class="faq">
-            <div class="faq-item">
-                <div class="faq-question">❓ How do I add the bot?</div>
-                <div class="faq-answer">You can add the bot by clicking the "Invite Me" link at the top of this page.</div>
+            <div class="faq-question">
+                ❓ How do I add the bot? <span>+</span>
             </div>
-            <div class="faq-item">
-                <div class="faq-question">❓ What permissions does it need?</div>
-                <div class="faq-answer">The bot needs Administrator permissions for full functionality, but you can customize them based on your needs.</div>
+            <div class="faq-answer">
+                Click the "Invite Me" button in the navigation bar, then select your server and grant the necessary permissions.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="faq-question">
+                ❓ What permissions does it need? <span>+</span>
+            </div>
+            <div class="faq-answer">
+                The bot requires Administrator permissions to function properly, but you can customize permissions based on your needs.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="faq-question">
+                ❓ Is Cloud Security free? <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Yes! The bot is free to use, but premium features are available for extra security and automation.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="faq-question">
+                ❓ How do I get support? <span>+</span>
+            </div>
+            <div class="faq-answer">
+                Join our community server through the "Community" link in the navigation bar for assistance.
             </div>
         </div>
     </div>
@@ -115,15 +142,11 @@
     <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
 
     <script>
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                let answer = this.nextElementSibling;
-                if (answer.style.display === "block") {
-                    answer.style.display = "none";
-                } else {
-                    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = "none");
-                    answer.style.display = "block";
-                }
+        document.querySelectorAll(".faq").forEach(faq => {
+            faq.addEventListener("click", function () {
+                this.classList.toggle("active");
+                let sign = this.querySelector("span");
+                sign.textContent = this.classList.contains("active") ? "−" : "+";
             });
         });
     </script>
