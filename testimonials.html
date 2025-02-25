@@ -17,7 +17,7 @@
         }
 
         .nav {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             padding: 15px 0;
             position: fixed;
             width: 100%;
@@ -26,6 +26,8 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
         }
 
         .nav a {
@@ -50,19 +52,38 @@
             max-width: 700px;
             margin: auto;
             padding: 50px 20px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .testimonial-container:hover {
+            transform: scale(1.02);
         }
 
         .testimonial {
             display: none;
             font-size: 20px;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out, transform 0.5s ease-in-out;
         }
 
         .active {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            border: 3px solid #8e44ad;
+            box-shadow: 0 0 10px rgba(142, 68, 173, 0.8);
         }
 
         .footer {
@@ -85,10 +106,22 @@
     <div class="container">
         <h1>What Our Users Say</h1>
         <div class="testimonial-container">
-            <p class="testimonial active">💬 "Cloud Security has transformed our server. Highly recommend!"</p>
-            <p class="testimonial">💬 "The best security bot we've used. 10/10!"</p>
-            <p class="testimonial">💬 "Our moderation has never been easier. Thanks, Cloud Security!"</p>
-            <p class="testimonial">💬 "Super simple to set up and works flawlessly!"</p>
+            <div class="testimonial active">
+                <img src="https://i.pravatar.cc/60?img=1" alt="User 1" class="profile-pic">
+                <p>💬 "Cloud Security has transformed our server. Highly recommend!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/60?img=2" alt="User 2" class="profile-pic">
+                <p>💬 "The best security bot we've used. 10/10!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/60?img=3" alt="User 3" class="profile-pic">
+                <p>💬 "Our moderation has never been easier. Thanks, Cloud Security!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="https://i.pravatar.cc/60?img=4" alt="User 4" class="profile-pic">
+                <p>💬 "Super simple to set up and works flawlessly!"</p>
+            </div>
         </div>
     </div>
 
@@ -98,17 +131,19 @@
         let index = 0;
         function showTestimonial() {
             let testimonials = document.querySelectorAll(".testimonial");
-            testimonials.forEach((t, i) => {
+            testimonials.forEach((t) => {
                 t.classList.remove("active");
                 t.style.opacity = "0";
+                t.style.transform = "translateY(10px)";
             });
 
             index = (index + 1) % testimonials.length;
             testimonials[index].classList.add("active");
             testimonials[index].style.opacity = "1";
+            testimonials[index].style.transform = "translateY(0)";
         }
 
-        setInterval(showTestimonial, 3000);
+        setInterval(showTestimonial, 4000);
     </script>
 </body>
 </html>
