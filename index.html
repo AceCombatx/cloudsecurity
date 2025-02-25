@@ -13,7 +13,12 @@
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
-            transition: background 0.5s;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        .dark-mode {
+            background: linear-gradient(135deg, #0d0d1a, #1b1d2b, #4a0f9b);
+            color: #e0e0e0;
         }
 
         .nav {
@@ -26,6 +31,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            z-index: 1000;
         }
 
         .nav a {
@@ -39,13 +45,25 @@
             color: #8e44ad;
         }
 
+        .announcement {
+            background: #8e44ad;
+            color: #ffffff;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            z-index: 1001;
+        }
+
         .container {
             max-width: 900px;
             margin: auto;
-            padding: 120px 20px 50px;
+            padding: 150px 20px 50px;
         }
 
-        .button {
+        .button, .announcement button {
             display: inline-block;
             margin-top: 20px;
             padding: 12px 24px;
@@ -54,10 +72,12 @@
             text-decoration: none;
             font-size: 18px;
             border-radius: 5px;
+            border: none;
+            cursor: pointer;
             transition: all 0.3s;
         }
 
-        .button:hover {
+        .button:hover, .announcement button:hover {
             background: linear-gradient(135deg, #6a11cb, #8e44ad);
             transform: scale(1.05);
         }
@@ -67,9 +87,41 @@
             font-size: 14px;
             opacity: 0.8;
         }
+
+        .toggle-mode {
+            cursor: pointer;
+            padding: 10px 15px;
+            border: none;
+            background: linear-gradient(135deg, #6a11cb, #8e44ad);
+            color: #ffffff;
+            font-size: 16px;
+            border-radius: 5px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1001;
+            transition: all 0.3s;
+        }
+
+        .toggle-mode:hover {
+            background: linear-gradient(135deg, #8e44ad, #6a11cb);
+        }
+
+        .stats {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
     </style>
 </head>
 <body>
+    <div class="announcement" id="announcement">
+        🚀 New features added! Check out the latest updates.
+        <button onclick="dismissAnnouncement()">Dismiss</button>
+    </div>
+    
     <div class="nav">
         <a href="index.html">Home</a>
         <a href="features.html">Features</a>
@@ -79,12 +131,34 @@
         <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Me</a>
     </div>
     
+    <button class="toggle-mode" onclick="toggleMode()">🌙 Toggle Mode</button>
+    
     <div class="container">
         <h1>Welcome to Cloud Security 🌩🔐</h1>
         <p>Cloud Security is a powerful bot that protects your Discord server from threats, raids, and malicious activity.</p>
         <a href="https://cloud-security.gitbook.io/cloud-security-docs/" class="button">Get Started</a>
+        
+        <div class="stats" id="stats">Bot Stats: 0 Servers | 0 Users | 0 Commands Run</div>
     </div>
-
+    
     <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+        
+        function dismissAnnouncement() {
+            document.getElementById("announcement").style.display = "none";
+        }
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            let stats = document.getElementById("stats");
+            setTimeout(() => {
+                stats.style.opacity = 1;
+                stats.innerHTML = "Bot Stats: 11 Servers | 1 Users | 20 Commands Run";
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
