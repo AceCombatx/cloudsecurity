@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Security - Next Level</title>
+    <title>Cloud Security - Welcome</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #12172b, #1e2238, #5429cb);
+            background: linear-gradient(135deg, #1a1a2e, #2b2d42, #6a11cb);
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
@@ -17,7 +17,7 @@
         }
 
         .dark-mode {
-            background: linear-gradient(135deg, #0a0c1a, #16192b, #3a1f80);
+            background: linear-gradient(135deg, #0d0d1a, #1b1d2b, #4a0f9b);
             color: #e0e0e0;
         }
 
@@ -40,86 +40,124 @@
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            transition: color 0.3s, transform 0.2s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .nav a:hover {
-            color: #f39c12;
+            color: #ffccff;
             transform: scale(1.1);
         }
 
-        .announcement {
-            background: #8e44ad;
-            color: #ffffff;
-            padding: 12px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-            z-index: 1001;
-            transition: top 0.5s ease-in-out;
+        .container {
+            margin-top: 80px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 160px 20px 50px;
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: url('https://www.transparenttextures.com/patterns/cubes.png');
+            opacity: 0.2;
+            animation: moveBackground 10s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: 100px 100px; }
         }
 
         .button {
             display: inline-block;
             margin-top: 20px;
-            padding: 12px 26px;
+            padding: 12px 24px;
             background: linear-gradient(135deg, #8e44ad, #6a11cb);
             color: #ffffff;
             text-decoration: none;
             font-size: 18px;
+            font-weight: bold;
             border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s, transform 0.2s;
+            animation: pulse 2s infinite;
         }
 
         .button:hover {
-            background: linear-gradient(135deg, #6a11cb, #8e44ad);
-            transform: scale(1.07);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 0px 15px #8e44ad;
         }
 
-        .toggle-mode {
-            cursor: pointer;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #6a11cb, #8e44ad);
-            color: #ffffff;
-            font-size: 16px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .security-checklist {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
             border-radius: 8px;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1001;
-            transition: all 0.3s;
+            margin-top: 30px;
+            text-align: left;
+            display: inline-block;
         }
 
-        .toggle-mode:hover {
-            background: linear-gradient(135deg, #8e44ad, #6a11cb);
-            transform: scale(1.1);
+        .security-checklist h2 {
+            color: #d1aaff;
+        }
+
+        .security-checklist ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .security-checklist li {
+            margin: 10px 0;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .security-checklist li:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .stats {
+            font-size: 18px;
             margin-top: 20px;
-            font-size: 22px;
             font-weight: bold;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            animation: fadeIn 2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #d1aaff;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #ffccff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
         }
     </style>
 </head>
 <body>
-    <div class="announcement" id="announcement">
-        🚀 Major update released! Check out the latest features.
-        <button onclick="dismissAnnouncement()" class="button">Dismiss</button>
-    </div>
+    <div class="animated-bg"></div>
     
     <div class="nav">
         <a href="index.html">Home</a>
@@ -127,46 +165,40 @@
         <a href="faq.html">FAQ</a>
         <a href="community.html">Community</a>
         <a href="testimonials.html">Testimonials</a>
-        <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Me</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Cloud Security</a>
     </div>
-    
-    <button class="toggle-mode" onclick="toggleMode()">🌙 Toggle Mode</button>
     
     <div class="container">
         <h1>Welcome to Cloud Security 🌩🔐</h1>
-        <p>Your ultimate protection against threats, raids, and malicious activity.</p>
-        <a href="#" class="button">Get Started</a>
+        <p>Protecting your Discord server from threats, raids, and malicious activity.</p>
+        <a href="https://cloud-security.gitbook.io/cloud-security-docs" class="button">Get Started</a>
         
-        <div class="stats" id="stats">Bot Stats: 0 Servers | 0 Users | 0 Commands Run</div>
+        <div class="stats" id="stats">Bot Stats: <span id="servers">0</span> Servers | <span id="users">0</span> Users | <span id="commands">0</span> Commands Run</div>
+
+        <div class="security-checklist">
+            <h2>🛡️ Security Checklist</h2>
+            <ul>
+                <li onclick="toggleCheck(this)">✅ Enable 2FA for server admins</li>
+                <li onclick="toggleCheck(this)">✅ Use role-based permissions</li>
+                <li onclick="toggleCheck(this)">✅ Limit bot permissions</li>
+                <li onclick="toggleCheck(this)">✅ Enable anti-raid features</li>
+                <li onclick="toggleCheck(this)">✅ Monitor server logs regularly</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Cloud Security. All Rights Reserved. | <a href="https://cloud-security.gitbook.io/cloud-security-docs/legal/privacy-policy">Privacy Policy</a> | <a href="https://cloud-security.gitbook.io/cloud-security-docs/legal/terms-of-service">Terms of Service</a>
     </div>
     
-    <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
-
     <script>
-        function toggleMode() {
-            document.body.classList.toggle("dark-mode");
-            localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
-        }
-
-        function dismissAnnouncement() {
-            document.getElementById("announcement").style.top = "-50px";
-            sessionStorage.setItem("announcementDismissed", "true");
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem("darkMode") === "true") {
-                document.body.classList.add("dark-mode");
+        function toggleCheck(element) {
+            if (element.innerHTML.includes("✅")) {
+                element.innerHTML = element.innerHTML.replace("✅", "❌");
+            } else {
+                element.innerHTML = element.innerHTML.replace("❌", "✅");
             }
-            if (sessionStorage.getItem("announcementDismissed") === "true") {
-                document.getElementById("announcement").style.display = "none";
-            }
-
-            let stats = document.getElementById("stats");
-            setTimeout(() => {
-                stats.style.opacity = 1;
-                stats.innerHTML = "Bot Stats: 11 Servers | 1 Users | 30 Commands Run";
-            }, 1200);
-        });
+        }
     </script>
 </body>
 </html>
