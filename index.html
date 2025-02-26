@@ -1,164 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Security - Welcome</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e, #2b2d42, #6a11cb);
-            color: #ffffff;
-            text-align: center;
-            overflow-x: hidden;
-            transition: background 0.5s, color 0.5s;
-        }
+import { useState, useEffect } from "react";
 
-        .dark-mode {
-            background: linear-gradient(135deg, #0d0d1a, #1b1d2b, #4a0f9b);
-            color: #e0e0e0;
-        }
+export default function CloudSecurityWebsite() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-        .nav {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 1000;
-        }
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500);
+  }, []);
 
-        .nav a {
-            color: #d1aaff;
-            text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
+  if (loading) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#1a1a2e] text-white">
+        <div className="relative w-20 h-20">
+          <div className="absolute inset-0 w-20 h-20 bg-gradient-to-tr from-blue-400 to-purple-500 rounded-2xl shadow-xl animate-pulse"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 border-4 border-gray-300 border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        </div>
+        <p className="mt-4 text-2xl font-bold animate-fade-in">Cloud Security</p>
+        <p className="text-gray-400 animate-fade-in">Loading...</p>
+      </div>
+    );
+  }
 
-        .nav a:hover {
-            color: #8e44ad;
-        }
+  return (
+    <div className={`min-h-screen ${darkMode ? "bg-[#0d0d1a] text-[#e0e0e0]" : "bg-[#1a1a2e] text-white"} transition-all duration-300`}>
+      {/* Navigation */}
+      <nav className="bg-black bg-opacity-80 fixed w-full top-0 left-0 py-4 flex justify-center gap-6 z-50">
+        <a href="index.html" className="text-purple-400 hover:text-purple-600 transition">Home</a>
+        <a href="features.html" className="text-purple-400 hover:text-purple-600 transition">Features</a>
+        <a href="faq.html" className="text-purple-400 hover:text-purple-600 transition">FAQ</a>
+        <a href="community.html" className="text-purple-400 hover:text-purple-600 transition">Community</a>
+        <a href="testimonials.html" className="text-purple-400 hover:text-purple-600 transition">Testimonials</a>
+        <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778" className="text-purple-400 hover:text-purple-600 transition">Invite Me</a>
+      </nav>
 
-        .announcement {
-            background: #8e44ad;
-            color: #ffffff;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            text-align: center;
-            font-weight: bold;
-            z-index: 1001;
-        }
+      {/* Dark Mode Toggle */}
+      <button onClick={() => setDarkMode(!darkMode)} className="fixed bottom-5 right-5 bg-purple-500 text-white p-3 rounded-full shadow-lg transition hover:bg-purple-600">
+        {darkMode ? "☀️" : "🌙"}
+      </button>
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 150px 20px 50px;
-        }
+      {/* Hero Section */}
+      <header id="home" className="text-center pt-32 pb-16 px-6">
+        <h1 className="text-5xl font-bold">Welcome to Cloud Security 🌩🔐</h1>
+        <p className="text-lg mt-4">Cloud Security is a powerful bot that protects your Discord server from threats, raids, and malicious activity.</p>
+        <a href="https://cloud-security.gitbook.io/cloud-security-docs/" className="mt-6 inline-block bg-purple-500 px-6 py-3 text-lg rounded-lg shadow-md text-white transition hover:bg-purple-600">Get Started</a>
+      </header>
 
-        .button, .announcement button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #8e44ad, #6a11cb);
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+      {/* Bot Stats */}
+      <section className="text-center py-12">
+        <h2 className="text-3xl font-bold">Bot Stats</h2>
+        <p className="text-lg mt-4">Servers: 11 | Users: 1 | Commands Used: 20</p>
+      </section>
 
-        .button:hover, .announcement button:hover {
-            background: linear-gradient(135deg, #6a11cb, #8e44ad);
-            transform: scale(1.05);
-        }
-
-        .footer {
-            margin-top: 40px;
-            font-size: 14px;
-            opacity: 0.8;
-        }
-
-        .toggle-mode {
-            cursor: pointer;
-            padding: 10px 15px;
-            border: none;
-            background: linear-gradient(135deg, #6a11cb, #8e44ad);
-            color: #ffffff;
-            font-size: 16px;
-            border-radius: 5px;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1001;
-            transition: all 0.3s;
-        }
-
-        .toggle-mode:hover {
-            background: linear-gradient(135deg, #8e44ad, #6a11cb);
-        }
-
-        .stats {
-            margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-    </style>
-</head>
-<body>
-    <div class="announcement" id="announcement">
-        🚀 New features added! Check out the latest updates.
-        <button onclick="dismissAnnouncement()">Dismiss</button>
+      {/* Footer */}
+      <footer className="py-6 text-center text-sm opacity-75">
+        © 2025 Cloud Security. All Rights Reserved.
+      </footer>
     </div>
-    
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="features.html">Features</a>
-        <a href="faq.html">FAQ</a>
-        <a href="community.html">Community</a>
-        <a href="testimonials.html">Testimonials</a>
-        <a href="https://discord.com/oauth2/authorize?client_id=1342380987035680778">Invite Me</a>
-    </div>
-    
-    <button class="toggle-mode" onclick="toggleMode()">🌙 Toggle Mode</button>
-    
-    <div class="container">
-        <h1>Welcome to Cloud Security 🌩🔐</h1>
-        <p>Cloud Security is a powerful bot that protects your Discord server from threats, raids, and malicious activity.</p>
-        <a href="https://cloud-security.gitbook.io/cloud-security-docs/" class="button">Get Started</a>
-        
-        <div class="stats" id="stats">Bot Stats: 0 Servers | 0 Users | 0 Commands Run</div>
-    </div>
-    
-    <p class="footer">© 2025 Cloud Security. All Rights Reserved.</p>
-
-    <script>
-        function toggleMode() {
-            document.body.classList.toggle("dark-mode");
-        }
-        
-        function dismissAnnouncement() {
-            document.getElementById("announcement").style.display = "none";
-        }
-        
-        document.addEventListener("DOMContentLoaded", () => {
-            let stats = document.getElementById("stats");
-            setTimeout(() => {
-                stats.style.opacity = 1;
-                stats.innerHTML = "Bot Stats: 11 Servers | 1 Users | 20 Commands Run";
-            }, 1000);
-        });
-    </script>
-</body>
-</html>
+  );
+}
